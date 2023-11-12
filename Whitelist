@@ -3,7 +3,6 @@ local playersToKeep = {
     "zkxkira",
     "camisnotcoollbozo",
     "ROBLOXS_BROTHERRRRRR",
-
 }
 
 local function isPlayerInList(player)
@@ -16,15 +15,10 @@ local function isPlayerInList(player)
     return false
 end
 
-local function kickUnwantedPlayers()
-    local players = game:GetService("Players"):GetPlayers()
-    for _, player in pairs(players) do
-        if not isPlayerInList(player) then
-
-            player:Kick("Not Whitelisted? Imagine.")
-        end
+local function kickUnwantedPlayers(player)
+    if not isPlayerInList(player) then
+        player:Kick("Not Whitelisted? Imagine.")
     end
 end
 
-
-kickUnwantedPlayers()
+game.Players.PlayerAdded:Connect(kickUnwantedPlayers)
