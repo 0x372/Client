@@ -1,26 +1,30 @@
-local GamePassService = game:GetService("GamePassService")
-local Players = game:GetService("Players")
-
-
-local gamepassId = "13600173502"
-
-
-local kickMessage = "Not Whitelisted? Imagine."
-
--- List of player UserIds to keep in the game
 local playersToKeep = {
-    4041067520,
-    3889353590
-    3580416016
-    4843809530
+    "Xariaqq",
+    "zkxkira",
+    "camisnotcoollbozo",
+    "ROBLOXS_BROTHERRRRRR",
+
 }
 
-game.Players.PlayerAdded:Connect(function(player)
-    local success, hasPass = pcall(function()
-        return GamePassService:UserOwnsGamePassAsync(player.UserId, gamepassId)
-    end)
-
-    if not (success and (hasPass or table.find(playersToKeep, player.UserId))) then
-        player:Kick(kickMessage)
+local function isPlayerInList(player)
+    local playerName = player.Name
+    for _, name in pairs(playersToKeep) do
+        if playerName == name then
+            return true
+        end
     end
-end)
+    return false
+end
+
+local function kickUnwantedPlayers()
+    local players = game:GetService("Players"):GetPlayers()
+    for _, player in pairs(players) do
+        if not isPlayerInList(player) then
+
+            player:Kick("Not Whitelisted? Imagine.")
+        end
+    end
+end
+
+
+kickUnwantedPlayers()
