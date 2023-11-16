@@ -6,9 +6,9 @@ local playersToKeep = {
 }
 
 local function isPlayerInList(player)
-    local playerName = player.Name
+    local playerName = player.Name:lower()
     for _, name in pairs(playersToKeep) do
-        if playerName == name then
+        if playerName == name:lower() then
             return true
         end
     end
