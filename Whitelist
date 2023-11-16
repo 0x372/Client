@@ -3,6 +3,7 @@ local playersToKeep = {
     "zkxkira",
     "camisnotcoollbozo",
     "ROBLOXS_BROTHERRRRRR",
+    "jedelmx89alt",
 }
 
 local function isPlayerInList(player)
