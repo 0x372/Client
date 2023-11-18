@@ -9,19 +9,22 @@ local playersToKeep = {
 }
 
 local function isPlayerInList(player)
-    local playerName = player.Name:lower()
+    local playerName = player.Name
     for _, name in pairs(playersToKeep) do
-        if playerName == name:lower() then
+        if playerName == name then
             return true
         end
     end
     return false
 end
 
-local function kickUnwantedPlayers(player)
-    if not isPlayerInList(player) then
-        player:Kick("Not Whitelisted? Imagine.")
+local function kickUnwantedPlayers()
+    local players = game:GetService("Players"):GetPlayers()
+    for _, player in pairs(players) do
+        if not isPlayerInList(player) then
+            player:Kick("Not Whitelisted? Imagine.")
+        end
     end
 end
 
-game.Players.PlayerAdded:Connect(kickUnwantedPlayers)
+kickUnwantedPlayers()
