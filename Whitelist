@@ -1,30 +1,30 @@
-local playersToKeep = {
-    "Xariaqq",
-    "zkxkira",
-    "camisnotcoollbozo",
-    "ROBLOXS_BROTHERRRRRR",
-    "jedelmx89alt",
-    "DomatesHayat",
-    "Adriane_Gamer123",
+local authorizedUsers = {
+    ["Xariaqq"] = "rgwtpRbsCyEXR9or",
+    ["None"] = "None",
+    -
 }
 
-local function isPlayerInList(player)
+local function isAuthorized(player, key)
     local playerName = player.Name
-    for _, name in pairs(playersToKeep) do
-        if playerName == name then
-            return true
-        end
-    end
-    return false
+    return authorizedUsers[playerName] == key
 end
 
-local function kickUnwantedPlayers()
-    local players = game:GetService("Players"):GetPlayers()
-    for _, player in pairs(players) do
-        if not isPlayerInList(player) then
-            player:Kick("Not Whitelisted? Imagine.")
-        end
-    end
+-- Function to kick unauthorized players
+local function kickUnauthorized(player)
+  
+    player:Kick("Unauthorized access. Please provide a valid license key.")
 end
 
-kickUnwantedPlayers()
+
+local player = ... -- Get the player object
+local providedKey = ... -- Get the key provided by the player
+
+if isAuthorized(player, providedKey) then
+    -- Allow access for authorized users
+    print(player.Name .. " is authorized.")
+    -- Add your game logic here for authorized users
+else
+    
+    print(player.Name .. " is not authorized.")
+    kickUnauthorized(player)
+end
