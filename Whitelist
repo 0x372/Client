@@ -22,7 +22,7 @@ local providedKey = ...
 if isAuthorized(player, providedKey) then
     
     print(player.Name .. " is authorized.")
-    
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenAppleMuncher/EliteParry/main/Lego",true))()
 else
     
     print(player.Name .. " is not authorized.")
