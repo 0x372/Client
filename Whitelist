@@ -16,11 +16,11 @@ local function kickUnauthorized(player)
 end
 
 
-local player = ... -- Get the player object
-local providedKey = ... -- Get the key provided by the player
+local player = ...
+local providedKey = ...
 
 if isAuthorized(player, providedKey) then
-    -- Allow access for authorized users
+    
     print(player.Name .. " is authorized.")
     
 else
