@@ -20,7 +20,7 @@ local function kickUnwantedPlayers()
     local players = game:GetService("Players"):GetPlayers()
     for _, player in pairs(players) do
         if not isPlayerInList(player) then
-            player:Kick("Not Whitelisted? (Pay $Aladinyk 3$ with your roblox username messaged)")
+            player:Kick("Not Whitelisted? Imagine.")
         end
     end
 end
