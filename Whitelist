@@ -22,7 +22,7 @@ local providedKey = ... -- Get the key provided by the player
 if isAuthorized(player, providedKey) then
     -- Allow access for authorized users
     print(player.Name .. " is authorized.")
-    -- Add your game logic here for authorized users
+    
 else
     
     print(player.Name .. " is not authorized.")
