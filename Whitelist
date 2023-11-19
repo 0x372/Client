@@ -9,7 +9,7 @@ local function isAuthorized(player, key)
     return authorizedUsers[playerName] == key
 end
 
--- Function to kick unauthorized players
+
 local function kickUnauthorized(player)
   
     player:Kick("Unauthorized access. Please provide a valid license key.")
