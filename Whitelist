@@ -1,30 +1,28 @@
-local authorizedUsers = {
-    ["Xariaqq"] = "PUeu5nCLQ3N5A6TQkw7NbLafdAD4ZL",
-    ["None"] = "None",
-    -
+local playersToKeep = {
+    "Xariaqq",
+    "zkxkira",
+    "camisnotcoollbozo",
+    "DomatesHayat",
+    "Adriane_Gamer123",
 }
 
-local function isAuthorized(player, key)
+local function isPlayerInList(player)
     local playerName = player.Name
-    return authorizedUsers[playerName] == key
+    for _, name in pairs(playersToKeep) do
+        if playerName == name then
+            return true
+        end
+    end
+    return false
 end
 
-
-local function kickUnauthorized(player)
-  
-    player:Kick("Unauthorized access. Please provide a valid license key.")
+local function kickUnwantedPlayers()
+    local players = game:GetService("Players"):GetPlayers()
+    for _, player in pairs(players) do
+        if not isPlayerInList(player) then
+            player:Kick("Not Whitelisted? (Pay $Aladinyk 3$ with your roblox username messaged)")
+        end
+    end
 end
 
-
-local player = ...
-local providedKey = ...
-
-if isAuthorized(player, providedKey) then
-    
-    print(player.Name .. " is authorized.")
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenAppleMuncher/EliteParry/main/Lego",true))()
-else
-    
-    print(player.Name .. " is not authorized.")
-    kickUnauthorized(player)
-end
+kickUnwantedPlayers()
